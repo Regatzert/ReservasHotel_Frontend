@@ -1,1 +1,50 @@
-<p>manage-rooms works!</p>
+<div class="all-rooms">
+
+  <h2>All Rooms</h2>
+
+  <div
+    class="all-room-filter-div"
+    style="display:flex; justify-content:space-between; align-items:center;">
+
+    <div class="filter-select-div">
+
+      <label>Filter by Room Type:</label>
+
+      <select
+        [(ngModel)]="selectedRoomType"
+        (change)="filterRoomFunction(selectedRoomType)">
+
+        <option value="">All</option>
+
+        @for (type of roomTypes; track type) {
+
+          <option [value]="type">
+            {{ type }}
+          </option>
+
+        }
+
+      </select>
+
+      <button
+        class="add-room-button"
+        (click)="addRoom()">
+        Add Room
+      </button>
+
+    </div>
+
+  </div>
+
+  <app-room-result
+    [roomSearchResults]="currentRooms">
+  </app-room-result>
+
+  <app-pagination
+    [roomPerPage]="roomsPerPage"
+    [totalRooms]="filteredRooms.length"
+    [currentPage]="currentPage"
+    (pageChange)="paginate($event)">
+  </app-pagination>
+
+</div>

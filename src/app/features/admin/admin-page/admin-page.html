@@ -1,1 +1,27 @@
-<p>admin-page works!</p>
+<div class="admin-page">
+
+  <h1 class="welcome-message">
+    Welcome, {{ adminName }}
+  </h1>
+
+  <div class="admin-actions">
+
+    <button
+      class="admin-button"
+      (click)="goManageRooms()">
+
+      Manage Rooms
+
+    </button>
+
+    <button
+      class="admin-button"
+      (click)="goManageBookings()">
+
+      Manage Bookings
+
+    </button>
+
+  </div>
+
+</div>
