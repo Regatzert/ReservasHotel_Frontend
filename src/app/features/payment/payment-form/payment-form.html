@@ -1,0 +1,50 @@
+<div class="payment-form">
+
+  <h3>Complete Your Payment</h3>
+
+  <div class="amount-display">
+
+    <strong>
+      Amount to Pay:
+      ${{ amount | number:'1.2-2' }}
+    </strong>
+
+  </div>
+
+  <form (ngSubmit)="handleSubmit()">
+
+    <ngx-stripe-card
+      [options]="cardOptions"
+    >
+    </ngx-stripe-card>
+
+    <button
+      type="submit"
+      [disabled]="processing"
+      class="payment-button"
+    >
+      {{ processing
+        ? 'Processing...'
+        : 'Pay Now'
+      }}
+    </button>
+
+  </form>
+
+  @if (error) {
+
+    <p class="error-message">
+      {{ error }}
+    </p>
+
+  }
+
+  @if (succeeded) {
+
+    <p class="success-message">
+      Payment Succeeded: Thank you for your booking.
+    </p>
+
+  }
+
+</div>

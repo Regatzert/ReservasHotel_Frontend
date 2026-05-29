@@ -1,0 +1,20 @@
+<div class="payment-page">
+
+  <app-payment-form
+    [clientSecret]="clientSecret"
+    [amount]="amount"
+    (paymentSuccess)="onSuccess($event)"
+    (paymentError)="onError($event)"
+  >
+  </app-payment-form>
+
+  @if (paymentStatus) {
+
+    <div>
+      Payment Status:
+      {{ paymentStatus }}
+    </div>
+
+  }
+
+</div>

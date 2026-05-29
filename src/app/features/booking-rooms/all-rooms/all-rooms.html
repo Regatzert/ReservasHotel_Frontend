@@ -1,0 +1,53 @@
+<div class="all-rooms">
+
+  <h2>All Rooms</h2>
+
+  <div class="all-room-filter-div">
+
+    <label>
+      Filter By Room Type
+    </label>
+
+    <select
+      [(ngModel)]="selectedRoomType"
+      (change)="handleRoomTypeChange()"
+    >
+
+      <option value="">
+        All
+      </option>
+
+      @for (
+        type of roomTypes;
+        track type
+      ) {
+
+        <option [value]="type">
+          {{ type }}
+        </option>
+
+      }
+
+    </select>
+
+  </div>
+
+  <app-room-search
+    (searchResult)="handleSearchResult($event)"
+  >
+  </app-room-search>
+
+  <app-room-result
+    [roomSearchResults]="currentRooms"
+  >
+  </app-room-result>
+
+  <app-pagination
+    [roomPerPage]="roomsPerPage"
+    [totalRooms]="filteredRooms.length"
+    [currentPage]="currentPage"
+    (pageChange)="paginate($event)"
+  >
+  </app-pagination>
+
+</div>

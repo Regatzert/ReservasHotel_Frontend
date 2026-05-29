@@ -1,0 +1,73 @@
+<section class="room-results">
+
+  @if (
+    roomSearchResults &&
+    roomSearchResults.length > 0
+  ) {
+
+    <div class="room-list">
+
+      @for (
+        room of roomSearchResults;
+        track room.id
+      ) {
+
+        <div class="room-list-item">
+
+          <img
+            class="room-list-item-image"
+            [src]="room.imageUrl"
+            [alt]="room.roomNumber"
+          />
+
+          <div class="room-details">
+
+            <h3>
+              {{ room.type }}
+            </h3>
+
+            <p>
+              Price:
+              ${{ room.pricePerNight }}/Night
+            </p>
+
+            <p>
+              Description:
+              {{ room.description }}
+            </p>
+
+          </div>
+
+          <div class="book-now-div">
+
+            @if (isAdmin) {
+
+              <button
+                class="edit-room-button"
+                (click)="navigateToEdit(room.id)"
+              >
+                Edit Room
+              </button>
+
+            } @else {
+
+              <button
+                class="book-now-button"
+                (click)="navigateToRoom(room.id)"
+              >
+                View/Book Now
+              </button>
+
+            }
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</section>

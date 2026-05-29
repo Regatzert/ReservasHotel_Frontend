@@ -1,0 +1,91 @@
+<div class="auth-container">
+
+  @if (message.text) {
+
+    <p
+      [class]="message.type + '-message'"
+    >
+      {{ message.text }}
+    </p>
+
+  }
+
+  <h2>Register</h2>
+
+  <form
+    [formGroup]="registerForm"
+    (ngSubmit)="handleSubmit()"
+  >
+
+    <div class="form-group">
+
+      <label>First Name:</label>
+
+      <input
+        type="text"
+        formControlName="firstName"
+      />
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Last Name:</label>
+
+      <input
+        type="text"
+        formControlName="lastName"
+      />
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Email:</label>
+
+      <input
+        type="email"
+        formControlName="email"
+      />
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Phone Number:</label>
+
+      <input
+        type="text"
+        formControlName="phoneNumber"
+      />
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Password:</label>
+
+      <input
+        type="password"
+        formControlName="password"
+      />
+
+    </div>
+
+    <button type="submit">
+      Register
+    </button>
+
+  </form>
+
+  <p class="register-link">
+
+    Already have an account?
+
+    <a routerLink="/login">
+      Login
+    </a>
+
+  </p>
+
+</div>

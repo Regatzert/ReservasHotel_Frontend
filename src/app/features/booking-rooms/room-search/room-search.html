@@ -1,0 +1,124 @@
+<section>
+
+  <div class="search-container">
+
+    <!-- CHECK IN -->
+
+    <div class="search-field">
+
+      <label>
+        Check-in Date
+      </label>
+
+      <mat-form-field>
+
+        <input
+          matInput
+          [matDatepicker]="checkInPicker"
+          [(ngModel)]="startDate"
+          placeholder="Select Date"
+        >
+
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="checkInPicker"
+        >
+        </mat-datepicker-toggle>
+
+        <mat-datepicker
+          #checkInPicker
+        >
+        </mat-datepicker>
+
+      </mat-form-field>
+
+    </div>
+
+    <!-- CHECK OUT -->
+
+    <div class="search-field">
+
+      <label>
+        Check-Out Date
+      </label>
+
+      <mat-form-field>
+
+        <input
+          matInput
+          [matDatepicker]="checkOutPicker"
+          [(ngModel)]="endDate"
+          placeholder="Select Date"
+        >
+
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="checkOutPicker"
+        >
+        </mat-datepicker-toggle>
+
+        <mat-datepicker
+          #checkOutPicker
+        >
+        </mat-datepicker>
+
+      </mat-form-field>
+
+    </div>
+
+    <!-- ROOM TYPE -->
+
+    <div class="search-field">
+
+      <label>
+        Room Type
+      </label>
+
+      <select
+        [(ngModel)]="roomType"
+      >
+
+        <option
+          disabled
+          value=""
+        >
+          Select Room Type
+        </option>
+
+        @for (
+          type of roomTypes;
+          track type
+        ) {
+
+          <option [value]="type">
+
+            {{ type }}
+
+          </option>
+
+        }
+
+      </select>
+
+    </div>
+
+    <!-- BUTTON -->
+
+    <button
+      class="home-search-button"
+      (click)="handleSearch()"
+    >
+      Search Rooms
+    </button>
+
+  </div>
+
+  @if (error) {
+
+    <p class="error-message">
+      {{ error }}
+    </p>
+
+  }
+
+</section>

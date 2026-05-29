@@ -1,0 +1,66 @@
+<div class="profile-page">
+
+  @if (user) {
+    <h2>Welcome, {{ user.firstName }}</h2>
+  }
+
+  <div class="profile-actions">
+    <button (click)="handleEditProfile()" class="edit-profile-button">
+      Edit Profile
+    </button>
+
+    <button (click)="handleLogout()" class="logout-button">
+      Logout
+    </button>
+  </div>
+
+  @if (error) {
+    <p class="error-message">{{ error }}</p>
+  }
+
+  @if (user) {
+    <div class="profile-details">
+      <h3>My Profile Details</h3>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+      <p><strong>Phone Number:</strong> {{ user.phoneNumber }}</p>
+    </div>
+  }
+
+  <div class="bookings-section">
+    <h3>My Booking History</h3>
+
+    @if (bookings.length > 0) {
+
+      <div class="booking-list">
+
+        @for (booking of bookings; track booking.id) {
+
+          <div class="booking-item">
+
+            <p><strong>Booking Code:</strong> {{ booking.bookingReference }}</p>
+            <p><strong>Check-in Date:</strong> {{ booking.checkInDate }}</p>
+            <p><strong>Check-out Date:</strong> {{ booking.checkOutDate }}</p>
+            <p><strong>Payment Status:</strong> {{ booking.paymentStatus }}</p>
+            <p><strong>Booking Status:</strong> {{ booking.bookingStatus }}</p>
+            <p><strong>Amount:</strong> {{ booking.totalPrice }}</p>
+            <p><strong>Room Number:</strong> {{ booking.room.roomNumber }}</p>
+            <p><strong>Room Type:</strong> {{ booking.room.type }}</p>
+
+            <img
+              [src]="booking.room.imageUrl"
+              alt="Room"
+              class="room-photo"
+            />
+
+          </div>
+
+        }
+
+      </div>
+
+    } @else {
+      <p>No bookings found.</p>
+    }
+  </div>
+
+</div>
